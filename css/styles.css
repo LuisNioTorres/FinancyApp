@@ -1,0 +1,340 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.index{
+    min-height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    transition: 0.5s;
+}
+
+/* NAVBAR */
+.navbar{
+    min-height: 100%;
+    background-color: rgb(43, 41, 41);
+    color: white;
+    padding: 25px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.navbar h2{
+    padding-left: 35px;
+    font-size: 25px;
+}
+
+.navbar a{
+    text-decoration: none;
+    outline: none;
+    color: white;
+}
+
+.navbar__options{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-right: 10%;
+}
+
+
+.navbar__options>a>p{
+    opacity: 1;
+    visibility:visible;
+    transition:0.5s;
+    transition-delay: 0.2s;
+}
+
+.navbar .option{
+    display: flex;
+    padding: 15px 0 15px 15%;
+    gap: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+}
+
+.navbar .option.active{
+    color: black;
+    background-color: white;
+    font-size: 19px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius:10px;
+    transition: 0.5s;
+    transform: translateX(4%);
+}
+
+.navbar .option.active::before{
+    content: '';
+    background-color: green;
+    width: 8px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.navbar label, input{
+    display: none;
+}
+
+/* GENERAL */
+
+.home{
+    width: 100%;
+    min-height: 100vh;
+    padding: 75px;
+    display: grid;
+    grid-template-rows: 25% 70%;
+    background-color: rgb(236, 236, 225);
+    transition: 0.5s;
+}
+
+/*GENERAL SECTION 1 */
+
+.home > .information{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.information__principal{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+.information__principal>div{
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: 0.5s;
+}
+
+.information__principal>div>p{
+    color: gray;
+    font-size: 12px;
+}
+
+.information__principal>div.active{
+    background-color: rgb(43, 41, 41);
+    color: white;
+}
+
+.information__principal>div.active>p{
+    color: white;
+}
+
+
+
+
+
+
+/* GENERAL SECTION 2: DESGLOSE */
+.desglose{
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+.desglose__ahorros_transacciones{
+    display: grid;
+    grid-template-rows: 30% 70%;
+    background-color: red;
+}
+
+/*AHORROS */
+.desglose__ahorros_transacciones>.ahorros{
+    padding: 20px 25px;
+    height: max-content;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/*TITULOS DE AHORROS, TEXTO, TITULOS */
+
+.ahorros>.ahorros__titulos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ahorros__titulos>h2{
+    font-size: 18px;
+}
+
+.ahorros__titulos>p{
+    font-size: 14px;
+    color: gray;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+/*AHORA, LOS CUADRADOS DE AHORROS, A INFORMACION*/
+.ahorros__detalle{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+
+/* EL CUADRADO TOTAL SAVED, DINERO TOTAL*/
+.ahorros__detalle>.total{
+    background-color: beige;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 5%;
+    gap: 15px;
+    border-radius: 15px;
+}
+
+.total>i{
+    font-size: 30px;
+    color: green;
+}
+
+.total>div{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.total>div>p , .ahorros__detalle>ul>li>p{
+    color: gray;
+    font-size: 14px;
+}
+
+
+/*AHORROS DETALLE PERO AHORA LOS 4 CUADRADITOS QUE PUSE EN UNA LISTA */
+.ahorros__detalle>ul{
+    outline: none;
+    text-decoration: none;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 0 10px;
+    height: 100%;
+}
+
+
+
+/* 4 CUADRADITOS DE INFO */
+
+.ahorros__detalle>ul>li{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 10%;
+    position: relative;
+}
+
+.ahorros__detalle>ul>li>h2{
+    font-size: 16px;
+}
+
+.ahorros__detalle>ul>li::before{
+    content: '';
+    height: 100%;
+    width: 4px;
+    border-radius: 5px;
+    background-color: var(--color);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+
+
+/*TRANSACCIONES*/
+
+/*TITULOS DE DIV TRANSACCIONES */
+
+.desglose__ahorros_transacciones>.transacciones{
+    padding: 20px 25px;
+    background-color: white;
+    border-radius: 15px;
+    height: 70%;
+}
+
+.transacciones>.transacciones__titulos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.transacciones__titulos>h2{
+    font-size: 18px;
+}
+
+.transacciones__titulos>p{
+    font-size: 14px;
+    color: gray;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+} 
+
+/*TRANSACCIONES PER LOS CUADRITOS CON CADA UNA DE ELLAS */
+.transacciones__detalle>ul{
+    text-decoration: none;
+    list-style: none;
+}
+
+.transacciones__detalle>ul>li{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+/* MEDIAQUERIES */
+@media screen and (max-width:768px) {
+     .navbar>h2{
+        display: none;
+    }
+
+    .navbar .option{
+        padding-left: 20%;
+    }
+
+    .index.active{
+        grid-template-columns: 10% 90%;
+        transition: 0.6s;
+    }
+
+    .index.active .navbar .option{
+        padding-left: 40%;
+    }
+
+    .index.active .navbar__options>a>p{
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.2s;
+    }
+
+    .navbar label{
+        display: block;
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .index.active .navbar label{
+        display: block;
+    }
+
+}

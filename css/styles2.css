@@ -1,0 +1,340 @@
+/* ------------------------------------------- */
+/* RESET GENERAL                               */
+/* ------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ------------------------------------------- */
+/* INDEX - ESTRUCTURA GENERAL (GRID MOBILE)    */
+/* ------------------------------------------- */
+.index {
+    display: grid;
+    background-color: white;
+    grid-template:
+        "main"
+        "navbar";
+}
+
+.index > nav {
+    grid-area: navbar;
+    background-color: blue;
+}
+
+.index > main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ------------------------------------------- */
+/* SECCIÓN: INFORMATION y AHORROS              */
+/* ------------------------------------------- */
+.information,
+.ahorros {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Gap entre título y detalle */
+}
+
+.information__principal {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* 3 Divs de General */
+.information__principal > div {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: 0.5s;
+}
+
+.information__principal > div > p {
+    color: gray;
+    font-size: 12px;
+}
+
+/* Div General ACTIVE */
+.information__principal > div.active {
+    background-color: rgb(43, 41, 41);
+    color: white;
+}
+
+.information__principal > div.active > p {
+    color: white;
+}
+
+/* ------------------------------------------- */
+/* DESGLOSE: AHORROS, TRANSACCIONES, REPORTES  */
+/* ------------------------------------------- */
+.desglose,
+.desglose__ahorros_transacciones,
+.desglose__cuadro_reporte {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Gap entre secciones */
+}
+
+/* ------------------------------------------- */
+/* TÍTULOS (AHORROS, TRANSACCIONES, RECORD...) */
+/* ------------------------------------------- */
+.ahorros__titulos,
+.transacciones__titulos,
+.record__titulos,
+.cuadro__titulos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ahorros__titulos > h2,
+.transacciones__titulos > h2,
+.record__titulos > h2,
+.cuadro__titulos > h2 {
+    font-size: 18px;
+}
+
+.ahorros__titulos > p,
+.transacciones__titulos > p,
+.record__titulos > p,
+.cuadro__titulos > p {
+    font-size: 14px;
+    color: gray;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+/* ------------------------------------------- */
+/* DETALLE AHORROS, CUADRO, RECORD             */
+/* ------------------------------------------- */
+.ahorros__detalle,
+.cuadro__detalle,
+.record__detalle {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+/* EXCEPCIÓN: RECORD SIN GAP, CON MARGIN */
+.record__detalle {
+    margin-top: 25px;
+}
+
+/* AHORROS DETALLE - TOTAL */
+.ahorros__detalle > .total {
+    background-color: beige;
+    padding: 15px;
+    width: 80%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10%;
+}
+
+.total > i {
+    font-size: 30px;
+    color: green;
+}
+
+.total > div {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.total > div > p,
+.ahorros__detalle > ul > li > p {
+    color: gray;
+    font-size: 14px;
+}
+
+/* ------------------------------------------- */
+/* LISTAS GENERALES (UL)                       */
+/* ------------------------------------------- */
+ul {
+    outline: none;
+    text-decoration: none;
+    list-style: none;
+}
+
+/* LISTA AHORROS Y CUADRO - CUADRÍCULA */
+.ahorros__detalle > ul,
+.cuadro__detalle > ul {
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(2, 40%);
+    gap: 10%;
+}
+
+/* LISTA RECORD - VERTICAL */
+.record__detalle > ul {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ELEMENTOS DE LISTA AHORROS */
+.ahorros__detalle > ul > li {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 10%;
+    position: relative;
+}
+
+.ahorros__detalle > ul > li > h2 {
+    font-size: 16px;
+}
+
+/* LINEA DE COLOR EN LOS LI */
+.ahorros__detalle > ul > li::before,
+.cuadro__detalle > ul > li::before,
+.record__detalle > ul > li::before {
+    content: '';
+    height: 100%;
+    width: 4px;
+    border-radius: 5px;
+    background-color: var(--color);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* ------------------------------------------- */
+/* TRANSACCIONES                               */
+/* ------------------------------------------- */
+.transacciones__detalle > ul {
+    list-style: none;
+}
+
+.transacciones__detalle > ul > li > .persona {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* TEXTO E IMAGEN TRANSACCIÓN */
+.persona > img {
+    height: 80%;
+    width: 25px;
+}
+
+.persona > h2 {
+    font-size: 14px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+}
+
+.info > h2,
+.info > p {
+    font-size: 12px;
+}
+
+/* CADA TRANSACCIÓN INDIVIDUAL */
+.transacciones__detalle > ul > li {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+/* ------------------------------------------- */
+/* CUADRO CON IMAGEN                           */
+/* ------------------------------------------- */
+.cuadro__detalle > img {
+    margin-top: 15px;
+    width: 60%;
+}
+
+/* CUADROS INDIVIDUALES DE RECORD/CUADRO */
+.record__detalle > ul > li,
+.cuadro__detalle > ul > li {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 10%;
+    position: relative;
+    background-color: beige;
+    border-radius: 10px;
+}
+
+.cuadro__detalle > ul > li {
+    background-color: transparent;
+}
+
+.cuadro__detalle > ul > li > h2,
+.record__detalle > ul > li > h2 {
+    font-size: 16px;
+}
+
+.cuadro__detalle > ul > li > p,
+.record__detalle > ul > li > p {
+    color: gray;
+    font-size: 14px;
+}
+
+/*** NAVBAR ////*/
+#check,
+.navbar>h2,
+.navbar__options>a>p{
+    display: none;
+}
+
+.index>.navbar{
+    background-color: rgb(61, 61, 61);
+    margin-top: 35px;
+}
+
+.navbar__options{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 10px 0;
+}
+
+.navbar__options>.option{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    padding: 10px 20px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.option.active{
+    background-color: white;
+    color: green;
+    position: relative;
+}
+
+.option.active::before{
+    content: '';
+    height: 4px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: green;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
