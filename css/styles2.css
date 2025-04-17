@@ -169,6 +169,7 @@ body {
     padding: 25px;
     background-color :white;
     border-radius: 15px;
+    transition: ease all 0.5s;
 }
 
 /* ------------------------------------------- */
