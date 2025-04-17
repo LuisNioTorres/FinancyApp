@@ -9,7 +9,7 @@
 
 body {
     min-height: 100vh;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
 }
 
 /* ------------------------------------------- */
@@ -254,7 +254,7 @@ ul {
 .transacciones__detalle > ul > li {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
 /* ------------------------------------------- */
@@ -263,6 +263,7 @@ ul {
 .cuadro__detalle > img {
     margin-top: 15px;
     width: 60%;
+    max-width: 140px;
 }
 
 /* CUADROS INDIVIDUALES DE RECORD/CUADRO */
@@ -275,6 +276,12 @@ ul {
     position: relative;
     background-color: beige;
     border-radius: 10px;
+}
+
+.record__detalle>ul>li{
+    padding: 15px;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .cuadro__detalle > ul > li {
@@ -292,7 +299,8 @@ ul {
     font-size: 14px;
 }
 
-/*** NAVBAR ////*/
+/*** NAVBAR //// */
+
 #check,
 .navbar>h2,
 .navbar__options>a>p{
@@ -338,3 +346,79 @@ ul {
     bottom: 0;
     left: 0;
 }
+
+/** TABLET DESIGN ///*/
+
+ @media screen and (min-width:768px) {
+
+    .index{
+        padding: 25px 25px 0 25px;
+    }
+    
+    .information__principal {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .information__principal>div{
+        width: 100%;
+        padding: 15px 35px;
+    }
+
+    /*ESTE PADDING SERA IGUALES PARA TODOS, AHORROS...TRANSACCIONES... */
+    .ahorros,
+    .transacciones,
+    .cuadro,
+    .record{
+        padding: 25px;
+    }
+
+    .ahorros__detalle{
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .ahorros__detalle>.total{
+    padding: 15px 0 15px 20px;
+    width: 50%;
+    }
+
+    .transacciones__detalle>ul>li{
+        position: relative;
+        margin-top: 35px;
+    }
+
+    .transacciones__detalle>ul>li::before{
+        background-color: rgb(245, 239, 239);
+        content: '';
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        bottom: -50%;
+    }
+
+    .cuadro{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .cuadro__detalle{
+        display: flex;
+        flex-direction: row;
+        padding-left: 30%;
+    }
+
+    .cuadro__detalle>ul{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: end;
+    }
+
+    .record__detalle>ul{
+        width: 100%;
+    }
+
+ }
