@@ -10,6 +10,7 @@
 body {
     min-height: 100vh;
     padding: 20px 20px 0 20px;
+    background-color:rgb(241, 235, 235);
 }
 
 /* ------------------------------------------- */
@@ -17,11 +18,11 @@ body {
 /* ------------------------------------------- */
 .index {
     display: grid;
-    background-color: white;
     grid-template:
         "main"
         "navbar";
 }
+
 
 .index > nav {
     grid-area: navbar;
@@ -81,7 +82,9 @@ body {
 /* ------------------------------------------- */
 .desglose,
 .desglose__ahorros_transacciones,
-.desglose__cuadro_reporte {
+.desglose__cuadro_reporte,
+.index>main,
+.index>.navbar {
     display: flex;
     flex-direction: column;
     gap: 25px; /* Gap entre secciones */
@@ -160,6 +163,12 @@ body {
 .ahorros__detalle > ul > li > p {
     color: gray;
     font-size: 14px;
+}
+
+.desglose>div>section{
+    padding: 25px;
+    background-color :white;
+    border-radius: 15px;
 }
 
 /* ------------------------------------------- */
@@ -347,14 +356,20 @@ ul {
     left: 0;
 }
 
+
+
 /** TABLET DESIGN ///*/
 
  @media screen and (min-width:768px) {
+    body {
+        padding: 0;
+    }
 
     .index{
         padding: 25px 25px 0 25px;
+        background-color:rgb(241, 235, 235);
     }
-    
+
     .information__principal {
         flex-direction: row;
         gap: 15px;
@@ -421,4 +436,140 @@ ul {
         width: 100%;
     }
 
+ }
+
+
+ @media screen and (min-width:1024px){
+
+    /*TAMAÑO DEL INDEX DEBERIA SER AUTOMATICO */
+    /**** NAVBAR LAPTOP DESIGN *****/ 
+    .index {
+        padding: 0;
+        grid-template-columns: 20% auto;
+        grid-template-areas: 
+            "navbar main";
+    }
+
+    .index>.navbar{
+        transition: ease all 0.5s;
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        padding: 25px 0px 0 0px;
+        width: 100%;
+    }
+
+    .index>main{
+        padding: 25px;
+        background-color:rgb(241, 235, 235);
+    }
+
+    .index>.navbar,
+    .index>main{
+        gap: 25px;
+    }
+
+ 
+
+    .navbar>.navbar_titulo{
+        color: white;
+        padding-left: 25px;
+        padding-right: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navbar>h2,
+    .navbar__options>a>p{
+        display:block;
+    }
+
+    .navbar__options>a>p{
+        font-size: 16px;
+    }
+
+    .navbar__options{
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        padding: 0;
+        gap: 15px;
+    }
+
+    .navbar__options>.option{
+        gap: 15px;
+        width: 90%;
+        padding: 15px 20px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        align-items: center;
+    }
+
+    .option.active::before{
+        height: 100%;
+        width: 5px;
+        border-radius: 0;
+    }
+
+    .option.active>p{
+        color: black;
+    }
+
+    .navbar.active{
+        transition: ease all 0.5s;
+        align-items: center;
+        padding: 25px;
+        color: white;
+    }
+    
+    .navbar.active>#check,
+    .navbar_titulo>i{
+        display: block;
+        cursor: pointer;
+        font-size: 25px;
+        color: white;
+    }
+
+    .navbar.active .navbar__options,
+    .navbar.active .navbar_titulo{
+        display: none;
+    }
+
+    .index.active{
+        transition: 0.5s;
+        grid-template-columns: max-content auto;
+    }
+
+    /***** HOME LAPTOP DESIGN STYLES ***/
+    .desglose{
+        flex-direction: row;
+    }
+
+    .desglose__ahorros_transacciones{
+        width: 60%;
+    }
+
+    .desglose__cuadro_reporte{
+        width: 40%;
+    }
+
+    .transacciones{
+        height: 100%;
+    }
+
+    .cuadro__detalle{
+        display: flex;
+        flex-direction: row;
+        padding-left:10%;
+    }
+
+    .cuadro__detalle>ul{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    
  }
