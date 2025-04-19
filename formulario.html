@@ -1,0 +1,56 @@
+
+            <link rel="stylesheet" href="./css/formulario.css">
+            <div class="formulario">
+            <h2>Completa tu Transaccion</h2>
+            <form action="" method="post" class="form">
+                <div class="formulario__grupo">
+                    <label for="tipo_transaccion">Tipo: </label>
+                    <select name="tipo_transaccion" id="tipo_transaccion">
+                        <option value="INGRESOS">INGRESO</option>
+                        <option value="INGRESOS">AHORRO</option>
+                        <option value="INGRESOS">GASTO</option>
+                    </select>
+                    <div class="mensaje__error">
+                        <p>Escoje una opción</p>
+                    </div>
+                </div>
+
+                <div class="formulario__grupo">
+                    <label for="nombre_transaccion">Titulo: </label>
+                    <div class="grupo__input">
+                    <input type="text" name="nombre_transaccion" id="nombre_transaccion" class="input">
+                    <div class="mensaje__error">
+                        <p>Ingresa un titulo válido</p>
+                    </div>
+                    </div>
+                    
+                </div>
+
+                <div class="formulario__grupo">
+                    <label for="monto_transaccion">Monto: </label>
+                    <div class="grupo__input">
+                    <input type="text" name="monto_transaccion" id="monto_transaccion" class="input">
+                    <div class="mensaje__error">
+                        <p>Ingresa un monto valido</p>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="formulario__grupo">
+                    <label for="fecha_transaccion">Fecha: </label>
+                    <div class="grupo__input">
+                    <input type="date" name="fecha_transaccion" id="fecha_transaccion" class="input">
+                    <div class="mensaje__error">
+                        <p>Ingresa una fecha válida</p>
+                    </div>
+                    </div>
+                    
+                </div>
+
+                <div class="formulario__boton">
+                    <div class="boton_enviar">INGRESAR TRANSACCION</div>
+                    <div class="formulario__mensaje_error">Completa los campos correctamente!</div>
+                </div>
+                
+            </form>
+            </div>

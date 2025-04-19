@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --negro-suave: rgb(30, 30, 30); /* Negro suave, no puro, profesional */
+    --rojo-fuerte: rgb(200, 0, 0);
+    --gris-fuerte: rgb(80, 80, 80);
+}
+
+.addTransaccion,
+.addAtajo{
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.add{
+    background-color: var(--color);
+    padding: 30px 50px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    font-size: 20px;
+    color:var(--negro-suave);
+    transition: 0.2s;
+    text-transform:uppercase;
+}
+
+.add>i{
+    font-size: 55px;
+}
+
+.add:hover{
+    background-color: green;
+    color: white;
+}
+
+.atajos{
+    width: 90%;
+    display: flex;
+    gap: 25px;
+}
+
+.atajos__div{
+    width: 100%;
+    min-width: 70px;
+    max-width: 130px;
+    background-color: var(--color);
+    border-radius: 15px;
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    font-size: 14px;
+    transition: 0.2s;
+    color:var(--negro-suave);
+}
+.atajos__div>i{
+    font-size: 35px;
+}
+
+.atajos__div:hover{
+    background-color: var(--color-fuerte);
+    color: white;
+}
+
+.transacciones{
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+}
+@media screen and (min-width:768px) {
+    .addTransaccion,
+    .addAtajo{
+    }
+    
+}
+
+
+
+
+
+
+
