@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+:root{
+    --color-incorrecto : rgb(236, 109, 109);
+    --color-correcto: rgb(37, 190, 37);
+}
 
 .formulario{
     min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
 }
 
 .formulario{
@@ -30,7 +38,6 @@
     max-width: 600px;
     padding: 10px;
     outline: none;
-    border: 1px solid rgb(192, 190, 190);
     border: 2px solid rgb(192, 190, 190); /* Borde azul al hacer foco */
     box-shadow: 0 0 1px rgb(192, 190, 190);
     font-size: 14px;
@@ -63,4 +70,42 @@
     color: white;
     font-size: 18px;
     text-align: center;
+    cursor: pointer;
+}
+
+.input.active{
+    border: 2px solid rgb(236, 109, 109);
+}
+
+.input.exito{
+    border: 2px solid var(--color-correcto);
+}
+
+.input.active + .mensaje__error{
+    visibility: visible;
+    font-size: 14px;
+    color: var(--color-incorrecto);
+}
+
+.formulario__mensaje_error,
+.formulario__mensaje_exito{
+    visibility: hidden;
+    margin-top: 10px;
+    width: max-content;
+    height: 100%;
+    padding: 15px;
+    color: white;
+}
+
+.formulario__mensaje_error{
+    background-color: var(--color-incorrecto);
+}
+
+.formulario__mensaje_exito{
+    background-color: var(--color-correcto);
+}
+
+.formulario__mensaje_error.active,
+.formulario__mensaje_exito.active{
+    visibility: visible;
 }
