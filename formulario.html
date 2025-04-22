@@ -6,9 +6,9 @@
                 <div class="formulario__grupo">
                     <label for="tipo_transaccion">Tipo: </label>
                     <select name="tipo_transaccion" id="tipo_transaccion">
-                        <option value="INGRESOS">INGRESO</option>
-                        <option value="INGRESOS">AHORRO</option>
-                        <option value="INGRESOS">GASTO</option>
+                        <option value="INGRESO">INGRESO</option>
+                        <option value="AHORRO">AHORRO</option>
+                        <option value="GASTO">GASTO</option>
                     </select>
                     <div class="mensaje__error">
                         <p>Escoje una opción</p>
@@ -53,7 +53,6 @@
                     <div class="formulario__mensaje_exito">Transaccion agregaga con exito!</div>
                 </div>
 
-                <!-- PRUEBA DE VLAIDAR FORMULARIOOO
                 <script>
                     
                 let expresiones_tecla = {
@@ -140,7 +139,7 @@
                                     },600)
                                 })
                             } else {
-                                Formulario.mostrarMensaje('formulario__mensaje_error','active',900);
+                                Formulario.mostrarMensaje('.formulario__mensaje_error','active',900);
                                 
                             }
                         })
@@ -171,7 +170,7 @@
 
                 Formulario.aplicarValidacion(inputs);
                 Formulario.enviarFormulario();
-                </script>-->
+                </script>
                 
             </form>
             </div>

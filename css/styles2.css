@@ -7,6 +7,11 @@
     box-sizing: border-box;
 }
 
+:root{
+    --color-incorrecto : rgb(236, 109, 109);
+    --color-correcto: rgb(37, 190, 37);
+}
+
 body {
     min-height: 100vh;
     padding: 20px 20px 0 20px;
