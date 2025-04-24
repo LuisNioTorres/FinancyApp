@@ -188,7 +188,6 @@ class UI {
         let mayor_menor = basket.sort((a, b) => b.monto - a.monto);
         lista_record.innerHTML = mayor_menor.map((transaccion) => {
             let color = transaccion.tipo == 'INGRESO'? "rgb(37, 190, 37)" : transaccion.tipo == 'GASTO'? "rgb(236, 109, 109)" : "gray";
-            console.log(color);
             return `
                     <li style="--color : ${color}">
                         <p>${transaccion.nombre}</p>
@@ -351,3 +350,5 @@ UI.showTotales(balance_total, ingreso_total, gasto_total, ahorro_total);
 UI.mostrarTransacciones();
 UI.mostrarAhorros();
 UI.mostrarRecord();
+
+export {UI}

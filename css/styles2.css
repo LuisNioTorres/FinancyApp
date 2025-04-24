@@ -135,6 +135,7 @@ body {
     flex-direction: column;
     gap: 20px;
     align-items: center;
+    justify-content: center;
 }
 
 /* EXCEPCIÓN: RECORD SIN GAP, CON MARGIN */
@@ -293,6 +294,7 @@ ul {
     border-radius: 10px;
 }
 
+
 .record__detalle>ul>li{
     padding: 15px;
     flex-direction: row;
@@ -428,7 +430,6 @@ ul {
     .cuadro__detalle{
         display: flex;
         flex-direction: row;
-        padding-left: 30%;
     }
 
     .cuadro__detalle>ul{
@@ -567,7 +568,6 @@ ul {
     .cuadro__detalle{
         display: flex;
         flex-direction: row;
-        padding-left:10%;
     }
 
     .cuadro__detalle>ul{
