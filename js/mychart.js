@@ -1,17 +1,16 @@
 import {UI} from './js.js';
 
-let prueba = UI.calcularTotales();
-console.log(prueba.ahorro);
+let totales = UI.calcularTotales();
 
 const ctx = document.getElementById('myChart');
 
 new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ['Ingresos'+" $"+prueba.ingreso, 'Gastos' + " $"+prueba.gasto, 'Ahorros'+" $"+prueba.ahorro],
+    labels: ['Ingresos'+" $"+totales.ingreso.toLocaleString(), 'Gastos' + " $"+totales.gasto.toLocaleString(), 'Ahorros'+" $"+totales.ahorro.toLocaleString()],
     datasets: [{
       label: 'Porcentaje',
-      data: [prueba.ingreso, prueba.gasto, prueba.ahorro],
+      data: [totales.ingreso, totales.gasto, totales.ahorro],
       borderWidth: 1,
       backgroundColor: [
         'rgb(37, 190, 37)',

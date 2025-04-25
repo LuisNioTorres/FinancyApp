@@ -85,9 +85,9 @@ class UI {
     }
 
     static modificarContent(ingreso, gasto, ahorro, totales) {
-        ingreso.textContent = '$ ' + totales.ingreso;
-        gasto.textContent = '$ ' + totales.gasto;
-        ahorro.textContent = '$ ' + totales.ahorro;
+        ingreso.textContent = '$ ' + totales.ingreso.toLocaleString();
+        gasto.textContent = '$ ' + totales.gasto.toLocaleString();
+        ahorro.textContent = '$ ' + totales.ahorro.toLocaleString();
     }
 
     static calcularBalance(totales) {
@@ -97,7 +97,7 @@ class UI {
     static showTotales(balance, ingreso, gasto, ahorro) {
         UI.modificarContent(ingreso, gasto, ahorro, UI.calcularTotales());
         let balance_total = UI.calcularBalance(UI.calcularTotales());
-        balance.textContent = '$ ' + balance_total;
+        balance.textContent = '$ ' + balance_total.toLocaleString();
     }
 
     static mostrarNavbar(activadores = [check, boton_close], elementos = [index, navbar]) {
@@ -117,16 +117,27 @@ class UI {
                 await UI.cargarHtml(home, page);
                 UI.mostrarTransacciones();
                 const options_transacciones = document.querySelectorAll('.option_transaccion');
-                Transacciones.mostrarFormulario(options_transacciones);
+                UI.mostrarFormulario(options_transacciones);
+
+            })
+        })
+    }
+
+    static mostrarFormulario(options_transacciones) {
+        options_transacciones.forEach((transaccion) => {
+            transaccion.addEventListener('click', async () => {
+                await UI.cargarHtml(home, `formulario`);
+                const inputs = document.querySelectorAll('.input');
+                const fecha = document.querySelector('#fecha_transaccion');
+                const boton_enviar = document.querySelector('.boton_enviar');
+                Formulario.aplicarValidacion(inputs);
+                Formulario.enviarFormulario(boton_enviar, inputs);
 
             })
         })
     }
 
     static async cargarHtml(div, page) {
-        if (page == 'Home') {
-            location.href = 'index.html';
-        }
         try {
             const response = await fetch(`${page}.html`)
             if (!response.ok) throw new Error("ERROR, NO SE ENCONTRO LA PAGINA!");
@@ -140,8 +151,15 @@ class UI {
     static mostrarTransacciones() {
         const lista_transacciones = document.querySelector('.lista_transacciones');
         let basket = Store.getTransacciones();
+
+        //Sort necesita para ordenar que los montos sean NUMBERS y poder restarlos
+        //Number no acepta COMAS porque los lee como STRINGS, y elimina puntos innecesarios
+        //como 10. => 10, pero 10.5 => 10.5
+        //Se van a eliminar las comas y los puntos de cada monto
+        UI.limpiarMonto(basket);
+
         basket.sort((a,b)=> new Date(b.fecha)- new Date(a.fecha));
-        //console.log("SE ORDENO",reciente_antigua);
+
         lista_transacciones.innerHTML = basket.map((transaccion) => {
             let meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
             let fecha = new Date(transaccion.fecha);
@@ -156,7 +174,7 @@ class UI {
                                         <h2>${transaccion.nombre}</h2>
                                     </div>
                                     <div class="info">
-                                        <h2>${transaccion.tipo == 'INGRESO' ? "+" : "-"} $${transaccion.monto}</h2>
+                                        <h2>${transaccion.tipo == 'INGRESO' ? "+" : "-"} $${transaccion.monto.toLocaleString()}</h2>
                                         <p>${dia} ${meses[mes]} ${año}</p>
                                     </div>
             </li>
@@ -184,19 +202,35 @@ class UI {
     static mostrarRecord() {
         const lista_record = document.querySelector('.lista_record');
         let basket = Store.getTransacciones();
+
+        //Modificar cada monto de mi Basket 
+        //Eliminar comas, NUMBER no acepta comas en un numero, lo lee como String
+        //Convertir a numero porque...??? porque sort acepta solo numbers?
+        UI.limpiarMonto(basket);
+
         //Ordenar Basket de Mayor a Menor segun el MONTO
-        let mayor_menor = basket.sort((a, b) => b.monto - a.monto);
+        
+        let mayor_menor = basket.sort((a,b) => b.monto - a.monto);
+
         lista_record.innerHTML = mayor_menor.map((transaccion) => {
             let color = transaccion.tipo == 'INGRESO'? "rgb(37, 190, 37)" : transaccion.tipo == 'GASTO'? "rgb(236, 109, 109)" : "gray";
             return `
                     <li style="--color : ${color}">
                         <p>${transaccion.nombre}</p>
-                            <h2>${transaccion.monto}</h2>
+                            <h2>$ ${transaccion.monto.toLocaleString()}</h2>
                     </li>
             `
         }).join('')
 
     }
+
+    static limpiarMonto (basket) {
+        basket.forEach((transaccion)=>{
+            transaccion.monto = Number(transaccion.monto.replaceAll(',',""));
+        })
+    }
+
+   
 
 }
 
@@ -222,22 +256,6 @@ class Navbar {
 }
 
 
-class Transacciones {
-    static mostrarFormulario(options_transacciones) {
-        options_transacciones.forEach((transaccion) => {
-            transaccion.addEventListener('click', async () => {
-                await UI.cargarHtml(home, `formulario`);
-                const inputs = document.querySelectorAll('.input');
-                const fecha = document.querySelector('#fecha_transaccion');
-                const boton_enviar = document.querySelector('.boton_enviar');
-                Formulario.aplicarValidacion(inputs);
-                Formulario.enviarFormulario(boton_enviar, inputs);
-
-            })
-        })
-    }
-
-}
 
 class Formulario {
     static aplicarValidacion(inputs) {
@@ -345,7 +363,7 @@ class Formulario {
 
 UI.mostrarNavbar([boton_open, boton_close], [index, navbar]);
 UI.mostrarIndex(options);
-Transacciones.mostrarFormulario(options_transacciones);
+UI.mostrarFormulario(options_transacciones);
 UI.showTotales(balance_total, ingreso_total, gasto_total, ahorro_total);
 UI.mostrarTransacciones();
 UI.mostrarAhorros();
