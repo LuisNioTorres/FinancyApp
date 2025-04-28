@@ -241,7 +241,9 @@ class UI {
 
     static selectAtajo (atajo) {
         const select = document.getElementById('tipo_transaccion');
-        select.value = atajo;
+        select.value = atajo == "ADD" ? 
+                                'INGRESO' : 
+                                atajo;
     }
 
    
