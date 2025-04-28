@@ -10,7 +10,9 @@ const options_transacciones = document.querySelectorAll('.atajos__div');
 const balance_total = document.querySelector('.balance_total');
 const ingreso_total = document.querySelector('.ingreso_total');
 const gasto_total = document.querySelector('.gasto_total');
-const ahorro_total = document.querySelector('.ahorro_total')
+const ahorro_total = document.querySelector('.ahorro_total');
+let atajo = "";
+
 
 let expresiones_tecla = {
     nombre_transaccion: /^[a-zA-Z0-9_ ]+$/,
@@ -118,7 +120,6 @@ class UI {
                 UI.mostrarTransacciones();
                 const options_transacciones = document.querySelectorAll('.option_transaccion');
                 UI.mostrarFormulario(options_transacciones);
-
             })
         })
     }
@@ -126,7 +127,9 @@ class UI {
     static mostrarFormulario(options_transacciones) {
         options_transacciones.forEach((transaccion) => {
             transaccion.addEventListener('click', async () => {
+                atajo = UI.getAtajo(transaccion);
                 await UI.cargarHtml(home, `formulario`);
+                UI.selectAtajo(atajo);
                 const inputs = document.querySelectorAll('.input');
                 const fecha = document.querySelector('#fecha_transaccion');
                 const boton_enviar = document.querySelector('.boton_enviar');
@@ -228,6 +231,17 @@ class UI {
         basket.forEach((transaccion)=>{
             transaccion.monto = Number(transaccion.monto.replaceAll(',',""));
         })
+    }
+
+    static getAtajo (atajo) {
+        const atajo_div = atajo.querySelector('p');
+        atajo = atajo_div.textContent;
+        return atajo;
+    }
+
+    static selectAtajo (atajo) {
+        const select = document.getElementById('tipo_transaccion');
+        select.value = atajo;
     }
 
    
